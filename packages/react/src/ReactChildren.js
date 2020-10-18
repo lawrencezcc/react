@@ -23,6 +23,7 @@ const SUBSEPARATOR = ':';
 
 /**
  * Escape and wrap key so it is safe to use as a reactid
+ * 转译
  *
  * @param {string} key to be escaped.
  * @return {string} the escaped key.
