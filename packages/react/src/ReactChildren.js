@@ -23,7 +23,7 @@ const SUBSEPARATOR = ':';
 
 /**
  * Escape and wrap key so it is safe to use as a reactid
- * 转译
+ * 转义
  *
  * @param {string} key to be escaped.
  * @return {string} the escaped key.
@@ -34,6 +34,7 @@ function escape(key: string): string {
     '=': '=0',
     ':': '=2',
   };
+  // 为所有match调用callback，用escaperLookup里的值作替换
   const escapedString = key.replace(escapeRegex, function(match) {
     return escaperLookup[match];
   });
