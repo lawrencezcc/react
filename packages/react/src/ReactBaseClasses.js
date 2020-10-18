@@ -134,9 +134,13 @@ function PureComponent(props, context, updater) {
   this.updater = updater || ReactNoopUpdateQueue;
 }
 
+// pureComponentPrototype只是PureComponent.prototype的引用
 const pureComponentPrototype = (PureComponent.prototype = new ComponentDummy());
+// 将constructor属性重新指向自己，不然还是指向的Component
 pureComponentPrototype.constructor = PureComponent;
 // Avoid an extra prototype jump for these methods.
+// 为pureComponentPrototype浅拷贝Component.prototype上的属性（setState, forceUpdate）
+// 使它们可以直接被调用，而不需要再去继承的Component.prototype上查找
 Object.assign(pureComponentPrototype, Component.prototype);
 pureComponentPrototype.isPureReactComponent = true;
 
