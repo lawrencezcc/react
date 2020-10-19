@@ -408,6 +408,9 @@ export function createElement(type, config, children) {
       }
     }
   }
+
+  // 这里只是定义props带有warning的ref和key，当用户尝试访问的时候提示warning
+  // key和ref本身是有效的（key和ref通过config传入，但是和别的参数不同，单独做处理）
   if (__DEV__) {
     if (key || ref) {
       const displayName =
